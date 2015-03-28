@@ -1,8 +1,8 @@
+#!/bin/bash
 ################################################################################
 # THIS SCRIPT DETECTS FAHCORE USAGE AND THEN GENERATES AN RSS FEED WITH UPDATES
 # THIS SCRIPT IS INTENDED TO NOTIFY FAH SCIENTISTS OF VSP-FAH AVAILABILITY
 ################################################################################
-#!/bin/bash
 
 IFS=$'\n' #SEPARATE FIELDS BY NEWLINE
 RSS=/home/server/status/vsp-fah-status.xml #PATH TO RSS FEED
