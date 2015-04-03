@@ -1,0 +1,53 @@
+*********************** Log Started 2015-03-29T05:53:18Z ***********************
+05:53:18:************************* Folding@home Client *************************
+05:53:18:    Website: http://folding.stanford.edu/
+05:53:18:  Copyright: (c) 2009-2014 Stanford University
+05:53:18:     Author: Joseph Coffland <joseph@cauldrondevelopment.com>
+05:53:18:       Args: --dump all
+05:53:18:     Config: <none>
+05:53:18:******************************** Build ********************************
+05:53:18:    Version: 7.4.4
+05:53:18:       Date: Mar 4 2014
+05:53:18:       Time: 12:02:38
+05:53:18:    SVN Rev: 4130
+05:53:18:     Branch: fah/trunk/client
+05:53:18:   Compiler: GNU 4.4.7
+05:53:18:    Options: -std=gnu++98 -O3 -funroll-loops -mfpmath=sse -ffast-math
+05:53:18:             -fno-unsafe-math-optimizations -msse2
+05:53:18:   Platform: linux2 3.2.0-1-amd64
+05:53:18:       Bits: 64
+05:53:18:       Mode: Release
+05:53:18:******************************* System ********************************
+05:53:18:        CPU: AMD Phenom(tm) II X6 1090T Processor
+05:53:18:     CPU ID: AuthenticAMD Family 16 Model 10 Stepping 0
+05:53:18:       CPUs: 6
+05:53:18:     Memory: 7.80GiB
+05:53:18:Free Memory: 6.35GiB
+05:53:18:    Threads: POSIX_THREADS
+05:53:18: OS Version: 3.16
+05:53:18:Has Battery: false
+05:53:18: On Battery: false
+05:53:18: UTC Offset: -7
+05:53:18:        PID: 22042
+05:53:18:        CWD: /home/server/status
+05:53:18:         OS: Linux 3.16.0-33-generic x86_64
+05:53:18:    OS Arch: AMD64
+05:53:18:       GPUs: 2
+05:53:18:      GPU 0: ATI:5 Tahiti PRO [Radeon HD 7950]
+05:53:18:      GPU 1: NVIDIA:3 GK110 [Tesla K20C]
+05:53:18:       CUDA: Not detected
+05:53:18:***********************************************************************
+05:53:18:<config>
+05:53:18:  <!-- Folding Slots -->
+05:53:18:</config>
+05:53:18:Trying to access database...
+05:53:19:Successfully acquired database lock
+05:53:19:Enabled folding slot 00: PAUSED cpu:5 (not configured)
+05:53:19:Unit processing completed
+05:53:19:Saving configuration to config.xml
+05:53:19:<config>
+05:53:19:  <!-- Folding Slots -->
+05:53:19:  <slot id='0' type='CPU'/>
+05:53:19:</config>
+05:53:19:Set client configured
+05:53:19:Clean exit

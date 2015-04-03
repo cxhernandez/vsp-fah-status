@@ -5,14 +5,14 @@
 ################################################################################
 
 IFS=$'\n' #SEPARATE FIELDS BY NEWLINE
-RSS=/home/server/status/vsp-fah-status.xml #PATH TO RSS FEED
+RSS=/home/server/users/cxh/status/vsp-fah-status.xml #PATH TO RSS FEED
 LOG=/home/server/log.txt #PATH TO FAHCORE LOG
-GPULIST=/home/server/status/GPUs.txt #LIST OF CURRENTLY INSTALLED GPUS ORDERED BY SLOT NUMBER()
+GPULIST=/home/server/users/cxh/status/GPUs.txt #LIST OF CURRENTLY INSTALLED GPUS ORDERED BY SLOT NUMBER()
 CORE=`ps cax | grep FahCore | awk '{ print $5 }'` #CORE STATUS
 PROJECT=`grep Project $LOG | tail -1 | awk '{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'` #CURRENT RUNNING PROJECT
 DATE=`date -R` #CURRENT DATE
 PREV=`grep -m 5 -A6 "<item>" $RSS` #PREVIOUS 5 STATUS UPDATES (NECESSARY FOR IFTTT TO NOTIFY THE SLACK)
-PREVGPU=`grep -m 1 -A6 "<item>" $RSS | grep description | cut -d">" -f2 | awk '{ print $1 }'` #MOST PREVIOUS GPU STATUS
+PREVGPU=`grep -m 1 -A6 "<item>" $RSS | grep description | cut -d">" -f2 | cut -d"[" -f1 | sed 's/\s$//g'` #MOST PREVIOUS GPU STATUS
 PREVGPU=`grep $PREVGPU $GPULIST` #CHECK TO SEE IF PREVIOUS GPU IS IN LIST (EMPTY IF NO GPU WAS IN USE)
 
 #CHECK IF THERE WAS A PROJECT RUNNING BEFORE
@@ -26,7 +26,7 @@ STATUS=`grep -A1 item $RSS | grep title | head -1 | grep "not"` #GET PREVIOUS ST
 
 #IF FAHCORE IS RUNNING OR IT'S NOT NOW BUT WAS DURING THE LAST CHECK THEN EXECUTE
 if [ -n "$CORE" ] || [ -z "$CORE" -a -z "$STATUS" ]; then
-	GPU=$((`grep READY $LOG | cut -d":" -f6 | head -1`+1)) #RETRIEVE GPU SLOT
+	GPU=$((`grep READY $LOG | grep Enabled | cut -d":" -f6 | head -1`+1)) #RETRIEVE GPU SLOT
 	GPU=`sed -n "${GPU}p" $GPULIST` #GET GPU NAME
 	#IF THE WAS NO GPU RUNNING BEFORE OR A DIFFERENT GPU WAS RUNNING OR A DIFFERENT PROJECT WAS RUNNING THE EXECUTE
 	if [ -z "$PREVGPU" ] || [ "$GPU" != "$PREVGPU" ] || [ "$PROJECT" != "$PREVPROJECT" ]; then
